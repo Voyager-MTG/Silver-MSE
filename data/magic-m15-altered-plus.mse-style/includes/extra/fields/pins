@@ -1,0 +1,14 @@
+extra card field:
+	type: choice
+	name: alternate pinlines
+	description: Changes the pinlines to a different single color
+	choice: none
+	choice: multicolor
+	choice: white
+	choice: blue
+	choice: black
+	choice: red
+	choice: green
+	choice: silver
+	choice: colorless
+	choice: artifact

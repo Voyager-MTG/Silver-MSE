@@ -1,0 +1,8 @@
+alternate pinlines:
+	left: 215
+	top: 483
+	width: 40
+	height: 3
+	render style: hidden
+	popup style: in place
+	z index: 1000

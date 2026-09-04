@@ -1,0 +1,406 @@
+color_background_plus := color_background@(masks_folder:"imagemasks/")
+
+crown_lead := {
+	if input != "crown" 
+	then ""
+	else if (
+		card.crown_type == "custom" 
+		and styling.custom_crown_location != ""
+	)
+		then "/magic-mainframe-extras.mse-include/" 
+		+ styling.custom_crown_location
+	else ""
+}
+crown_follow := {
+	if input != "crown" 
+		then ""
+	else if card.crown_type == "nyx"
+		then "nyx/"
+	else if card.crown_type == "star"
+		then "star/"
+	else if card.crown_type == "space" 
+		then "space/"
+	else if card.crown_type == "companion"
+		then "companion/"
+	else ""
+}
+
+mv_split := break_text@(
+	match: 
+	"(?ix) 1/2 | [|][WUBRGICX] | [0-9](/[WUBRGCVLHSICETQ2X]) | [0-9]+(?!/[WUBRGCVLHSICETQ2X]) | [WUBRGCVLHSI0-9X](/[WUBRGCVLHSIX])\{0,4} "
+)
+number_of_symbols := { 
+	length(
+		mv_split(
+			card.casting_cost_2
+		)
+	) 
+}
+
+prototype_cost := {
+		if number_of_symbols() < 2 
+			then color_background_plus(
+				type:"cpop1",
+				base_hybrid:pt_hybrid
+			) 
+		else if number_of_symbols() == 2 
+			then color_background_plus(
+				type:"cpop2",
+				base_hybrid:pt_hybrid
+			) 
+		else if number_of_symbols() == 3 
+			then color_background_plus(
+				type:"cpop3",
+				base_hybrid:pt_hybrid
+			) 
+		else if number_of_symbols() == 4 
+			then color_background_plus(
+				type:"cpop4",
+				base_hybrid:pt_hybrid
+			) 
+		else color_background_plus(
+			type:"cpop5",
+			base_hybrid:pt_hybrid
+		)
+}
+
+transfer_levels     := {
+	if is_mutate() 
+		then false 
+	else true
+}
+
+node_background     := { color_background_plus(type: "node"           , base_hybrid: card_hybrid) }
+nyx_background      := { color_background_plus(type: "nyx"            , base_hybrid: card_hybrid) }
+hands_background    := { color_background_plus(type: "hands"          , base_hybrid: card_hybrid) }
+ub_background       := { color_background_plus(type: "universesbeyond", base_hybrid: card_hybrid) }
+ubstamp_background  := { color_background_plus(type: "ubstamp"        , base_hybrid: card_hybrid) }
+voyager_background  := { color_background_plus(type: "voyager"        , base_hybrid: card_hybrid) }
+sky_background      := { color_background_plus(type: "sky"            , base_hybrid: card_hybrid) }
+pocket_background   := { color_background_plus(type: "pocket"          , base_hybrid: card_hybrid) }
+forge_background   := { color_background_plus(type: "forge"          , base_hybrid: card_hybrid) }
+glitch_background   := { color_background_plus(type: "glitch"         , base_hybrid: card_hybrid) }
+frontier_background := { color_background_plus(type: "frontier"       , base_hybrid: card_hybrid) }
+star_background     := { color_background_plus(type: "star"           , base_hybrid: card_hybrid) }
+space_background    := { color_background_plus(type: "space"          , base_hybrid: card_hybrid) }
+path_background     := { color_background_plus(type: "path"           , base_hybrid: card_hybrid) }
+norm_overlay        := { color_background_plus(type: "norm"           , base_hybrid: card_hybrid) }
+backdfc_background  := { color_background_plus(type: "backdfc"        , base_hybrid: card_hybrid) }
+lush_background     := { color_background_plus(type: "lush"           , base_hybrid: card_hybrid) }
+devoid_background   := { color_background_plus(type: "devoid"         , base_hybrid: card_hybrid) }
+devoid2_background  := { color_background_plus(type: "devoid2"        , base_hybrid: card_hybrid) }
+paradox_background  := { color_background_plus(type: "paradox"        , base_hybrid: card_hybrid) }
+paradox_ptbox       := { color_background_plus(type: "paradoxpt"      , base_hybrid: card_hybrid) }
+snow_background     := { color_background_plus(type: "snow"           , base_hybrid: card_hybrid) }
+snow_texture        := { color_background_plus(type: "snowtexture"    , base_hybrid: card_hybrid) }
+puma_bar            := { color_background_plus(type: "puma"           , base_hybrid: card_hybrid) }
+fnm_background      := { color_background_plus(type: "fnm"            , base_hybrid: card_hybrid) }
+inverted_background := { color_background_plus(type: "inverted"       , base_hybrid: card_hybrid) }
+alias_bar           := { color_background_plus(type: "alias"          , base_hybrid: card_hybrid) }
+alias2_bar          := { color_background_plus(type: "alias2"         , base_hybrid: card_hybrid) }
+miracle_background  := { color_background_plus(type: "miracle"        , base_hybrid: card_hybrid) }
+map_background      := { color_background_plus(type: "map"            , base_hybrid: card_hybrid) }
+energy_background   := { color_background_plus(type: "energy"         , base_hybrid: card_hybrid) }
+halfart_background  := { color_background_plus(type: "halfart"        , base_hybrid: card_hybrid) }
+promo_background    := { color_background_plus(type: "promo"          , base_hybrid: card_hybrid) }
+fnm_ptbox           := { color_background_plus(type: "fnmpt",           base_hybrid: pt_hybrid  ) }
+inverted_ptbox      := { color_background_plus(type: "invertedpt",      base_hybrid: pt_hybrid  ) }
+pt2                 := { color_background_plus(type: "pt2",             base_hybrid: pt_hybrid  ) }
+mappt_background    := { color_background_plus(type: "mappt",           base_hybrid: pt_hybrid  ) }
+arrow_background    := { color_background_plus(type: "arrow",           base_hybrid: pt_hybrid  ) }
+arrow_background_2  := { color_background_plus(type: "arrow2",          base_hybrid: pt_hybrid  ) }
+arrow_background_3  := { color_background_plus(type: "arrow3",          base_hybrid: pt_hybrid  ) }
+curtain_background  := { color_background_plus(type: "curtain"        , base_hybrid: card_hybrid) }
+cons_background     := { color_background_plus(type: "cons"           , base_hybrid: card_hybrid) }
+background_slide    := { color_background_plus(type: "slide"          , base_hybrid: card_hybrid) }
+background_slide_2  := { color_background_plus(type: "slide2"         , base_hybrid: card_hybrid) }
+background_slide_3  := { color_background_plus(type: "slide3"         , base_hybrid: card_hybrid) }
+season_background   := { color_background_plus(type: "season"         , base_hybrid: card_hybrid) }
+smallbox_colors     := { color_background_plus(type: "smallbox"       , base_hybrid: card_hybrid) }
+adventure_colors    := { color_background_plus(type: "adventure"      , base_hybrid: card_hybrid) }
+adventure2_colors   := { color_background_plus(type: "adventure2"     , base_hybrid: card_hybrid) }
+adventure3_colors   := { color_background_plus(type: "adventure3"     , base_hybrid: card_hybrid) }
+adventure4_colors   := { color_background_plus(type: "adventure4"     , base_hybrid: card_hybrid) }
+focus_colors        := { color_background_plus(type: "focus"          , base_hybrid: card_hybrid) }
+focus2_colors       := { color_background_plus(type: "focus2"         , base_hybrid: card_hybrid) }
+omen_colors			:= { color_background_plus(type: "double_omen"	  , base_hybrid: card_hybrid) }
+omen2_colors		:= { flip_horizontal(omen_colors(card.card_color_2)) }
+prototype_pt        := { color_background_plus(type: "pop"  	      , base_hybrid: card_hybrid) }
+prototype_colors    := { color_background_plus(type: "pro"  	      , base_hybrid: card_hybrid) }
+front_flag_image    := { color_background_plus(type: "front"          , base_hybrid: card_hybrid) }
+back_flag_image     := { color_background_plus(type: "back"           , base_hybrid: card_hybrid) }
+pins_image          := { color_background_plus(type: "pins"           , base_hybrid: card_hybrid) }
+texture_background  := { color_background_plus(type: "texture"        , base_hybrid: card_hybrid) }
+saga_background     := { color_background_plus(type: "saga"           , base_hybrid: card_hybrid) }
+bookmark_background := { color_background_plus(type: "bookmark"       , base_hybrid: card_hybrid) }
+ocean_background 	:= { color_background_plus(type: "ocean"		  , base_hybrid: card_hybrid) }
+old_background		:= { color_background_plus(type: "old"			  , base_hybrid: card_hybrid) }
+circle_background	:= { color_background_plus(type: "spacecraft"	  , base_hybrid: card_hybrid) }
+station_ptbox		:= { color_background_plus(type: "spacecraftpt"	  , base_hybrid: card_hybrid) }
+
+card_background		:= { color_background_plus(type:"card",		base_hybrid:card_hybrid)		}@(offset:0 )
+card_ptbox			:= { color_background_plus(type:"pt",		base_hybrid:pt_hybrid)			}@(offset:0 )
+flip_ptbox			:= { color_background_plus(type:"pt",		base_hybrid:flip_pt_hybrid)		}@(offset:0 )
+flip_ptbox2			:= { color_background_plus(type:"pt2",		base_hybrid:flip_pt_hybrid2)	}@(offset:0 )
+leveler_ptbox		:= { color_background_plus(type:"pt",		base_hybrid:leveler_pt_hybrid)	}@(offset:0 )
+leveler_ptbox2		:= { color_background_plus(type:"pt",		base_hybrid:leveler_pt_hybrid2)	}@(offset:0 )
+leveler_ptbox3		:= { color_background_plus(type:"pt",		base_hybrid:leveler_pt_hybrid3)	}@(offset:0 )
+card_textbox		:= { color_background_plus(type:"textbox",	base_hybrid:textbox_hybrid)		}@(offset:0 )
+card_typeline		:= { color_background_plus(type:"typeline",	base_hybrid:typeline_hybrid)	}@(offset:0 )
+card_identity		:= { color_background_plus(type:"identity",	base_hybrid:identity_hybrid)	}@(offset:0 )
+card_identity_2		:= { color_background_plus(type:"identity2",	base_hybrid:identity_hybrid)	}@(offset:0 )
+card_stamp			:= { color_background_plus(type:"stamp",		base_hybrid:stamp_hybrid)		}@(offset:0 )
+card_stamp2			:= { color_background_plus(type:"stamp2",	base_hybrid:stamp_hybrid)		}@(offset:0 )
+module_crown		:= { color_background_plus(type:"crown",		base_hybrid:card_hybrid)		}@(offset:0 )
+
+module_stamp			:= { color_background_plus(type:"stamp",		base_hybrid:stamp_hybrid)		}@(offset:0 )
+module_ubstamp			:= { color_background_plus(type:"ubstamp",	base_hybrid:stamp_hybrid)		}@(offset:0 )
+
+crown_preview := {
+	crown_follow := {crown}
+	crown_background()
+}
+
+#### The Card, including Borderless masking, Notch, and DFC Multiply
+main_background := {
+	### base
+	### borderless/frameless mask
+	### translucent miracle
+	### notch
+	### DKA/Mutate/Borderless Resize
+	### PUMA
+	### Lair
+	### Multiply
+	### Clear Tops
+	
+	notched := is_notched()
+	semi_trans := is_clear() or is_devoid()
+	bl := is_borderless()
+	fl := is_frameless()
+	thb := is_thbland()
+	lair := is_specialguest()
+	dka := is_full_art()
+	spacecraft := space_leveler() and not mini_arts()
+	if thb then fl := false
+	if semi_trans then (
+		bl := false;
+		fl := false;
+		notched := false
+	)
+	pin_color := node_color()
+	
+	blend_folder := if thb then "energies/" else if dka then "dka/" else template_prefix["card"]
+	
+	### the base blended frame
+	base := base_background()
+	if extra_card.alternate_pinlines != "none" then (
+		alt := color_background(
+				extra_card.alternate_pinlines,
+				type:"card",
+				base_hybrid:card_hybrid,
+				folder: blend_folder
+			)
+		base := insert_image(
+			base_image: base,
+			inserted_image: set_mask(image:alt, mask:blend_folder + "multicolor_blend_card.png"),
+			offset_x: 0,
+			offset_y: 0
+		)
+	)
+	
+	### apply borderless variants
+	# thbland
+	# dka
+	# spacecraft
+	# other borderless/frameless
+	# puma
+	
+	borderless_mask := if thb
+			then (if bl then "border_mask_inv" else "")
+		else if dka
+			then (if bl or fl then "borderless_dka" else "")
+		else if spacecraft
+			then if semi_trans then "" else ("spacecraft" + (if bl then "_borderless" else ""))
+		else if bl or fl
+			then "borderless"
+		else if is_puma()
+			then "puma"
+		else ""
+	
+	if borderless_mask != "" then base := set_mask(image:base, mask:"frame_masks/{borderless_mask}.png")
+	
+	### special handling for borderless-frameless-miracle
+	if bl and fl and is_miracle() then base := set_mask(image:base, mask:template_prefix["miracle"] + "mask_point.png")
+		
+	### apply the notch 
+	if notched then (
+		mask_base := ""
+		mask_notch := ""
+		notch_img := if dka
+			then notch_image_dka(pin_color)
+			else if is_fnm()
+				then notch_image_fnm(pin_color)
+			else if is_inverted()
+				then notch_image_inv(pin_color)
+			else if is_beyond()
+				then notch_image_ub(pin_color)
+			else if is_planeshifted()
+				then notch_image_shifted(pin_color)
+			else notch_image(pin_color)
+
+		if mask_base != "" then base := set_mask(image:base, mask:mask_base)
+		if mask_notch != "" then notch_img := set_mask(image:notch_img, mask:mask_notch)
+		
+		base := insert_image(
+			base_image: base,
+			inserted_image: notch_img,
+			offset_x: 0,
+			offset_y: 0
+		)
+	)
+	
+	### translucent textbox handling (DKA, Spacecraft, Mutate, Lair, BorderlessFrameless)
+	if dka 
+		then (
+			## clear/devoid mask themselves for bigger image window
+			if semi_trans
+				then base := dka_scripted_frame(base:base)
+			## others make the textbox semi-transparent
+			else base := set_mask(image:base, mask:"frame_masks/dka" + (if notched then "_notched" else "") + ".png")
+		)
+	else if spacecraft and not semi_trans
+		then (
+			base := set_mask(image:base, mask:"frame_masks/spacecraft_text" + (if notched then "_notched" else "") + ".png")
+		)
+	else if is_mutate() and not semi_trans and not lair
+		then base := set_mask(image:base, mask:"frame_masks/mutate.png")
+
+	if lair
+		then base := insert_image(
+			base_image: set_mask(image:base, mask:"frame_masks/secret_lair" + (if notched then "_notched" else "") + ".png")
+			inserted_image: "transparent_borderless" + (if notched then "_notched" else "") + ".png",
+			offset_x: 0,
+			offset_y: 0
+		)
+	else if bl and fl
+		then (
+			base := set_mask(
+				image:base,
+				mask: "frame_masks/semitrans" + (if notched then "_notched" else "") + ".png"
+			)
+		)
+	
+	### multiply back face
+	if is_back_face() then base := color_multiply(
+		image:base, width: 375, height: 523,
+		multiply_mask: base_multiply_mask()
+	)
+	
+	### multiply levels/backface
+	if is_leveler() or is_back_face() then base := color_multiply(
+		image: base, width: 375, height: 523,
+		multiply_mask: multiply_levels()
+	)
+
+	### fade the top for clear tops
+	if clear_tops() then base := set_mask(
+		image: base,
+		mask: "frame_masks/clear_tops_mask.png"
+	)
+	
+	### click masks are applied as the field mask
+	base
+}
+
+base_multiply_mask := {
+	"imagemasks/hybrid_blend_card.png"
+}
+
+base_background := { 
+	if is_clear() 
+		or clear_tops() 
+		or use_porthole() 
+		or use_styles() 
+		or use_ocean()
+			then "" 
+	else if is_glitch() 
+		then glitch_background()
+	else if is_fnm() 
+		then fnm_background() 
+	else if is_inverted() 
+		then inverted_background() 
+	else if is_paradox() 
+		then paradox_background() 
+	else if is_full_art() 
+		then promo_background() 
+	else if pure_snow() 
+		then snow_background() 
+	else if is_adventure() 
+		then adventure_colors() 
+	else if is_adventure2() 
+		then adventure2_colors() 
+	else if is_ub() 
+		then ub_background() 
+	else if is_saga() 
+		then saga_background() 
+	else if is_old()
+		then old_background()
+	else card_background() 
+}
+
+multi_scale := [0, 0.35, 0.7, 0.9, 1.0, 1.2, 1.5, 1.8, 2.0, 2,2, 2.5, 2.8, 3.0]
+multiply_levels := {
+	bump := 0
+	start := 1
+	end := 3
+	crop_width := if is_notched() then 375 else 346
+	level_map := [
+		[coord:0, height:lv_1_height()],
+		[coord:lv_2_coordinate(), height:lv_2_height()],
+		[coord:lv_3_coordinate(), height:lv_3_height()],
+		[coord:lv_4_coordinate(), height:lv_4_height()]
+	]
+	if not is_leveler() then (
+		level_map := [
+			[],
+			[coord: 0, height: 152]
+		]
+		end := 1
+	)
+	if is_leveler() and is_back_face() then (
+		start := 0
+		bump := 1
+	)
+	mask := "multiply_mask_canvas.png"
+	for x from start to end do (
+		lv_info := level_map[x]
+		if lv_info.height <= 0 then "" else (
+			lv_top := 329 + lv_info.coord
+
+			cropped := crop_image(
+				"multiply_mask_levels.png",
+				height: lv_info.height,
+				width: crop_width,
+				offset_x: 0,
+				offset_y: lv_top
+			)
+			mask := insert_image(
+				base_image: mask,
+				inserted_image: set_alpha(cropped, alpha:multi_scale[x+bump]),
+				offset_x: 0,
+				offset_y: lv_top
+			)
+			"dummy return"
+		)
+	)
+	mask
+}
+
+module_crown_patch := {
+	module_crown_template(override: card.crown_type)
+}
+crown_background := module_crown	
+
+harder_script := [
+	crown: module_crown_patch
+]
