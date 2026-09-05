@@ -85,6 +85,10 @@ choice:
 	type: radio
 	line below: true
 choice:
+	name: voyager
+	choice: erysite
+	line below: true
+choice:
 	name: back triangle
 	type: radio
 choice:

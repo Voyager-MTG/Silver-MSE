@@ -2888,6 +2888,7 @@ watermark_scripts :=
 	"mana symbol black":                                  { watermark_blend(colored: true, alpha: 1, dark_alpha: 1, wm_directory + "mana symbols/watermark_b.png", face:face) }
 	"mana symbol red":                                    { watermark_blend(colored: true, alpha: 1, dark_alpha: 1, wm_directory + "mana symbols/watermark_r.png", face:face) }
 	"mana symbol green":                                  { watermark_blend(colored: true, alpha: 1, dark_alpha: 1, wm_directory + "mana symbols/watermark_g.png", face:face) }
+	"mana symbol silver":                                  { watermark_blend(colored: true, alpha: 1, dark_alpha: 1, wm_directory + "mana symbols/watermark_i.png", face:face) }
 	"mana symbol colorless":                              { watermark_blend(colored: true, alpha: 1, dark_alpha: 1, wm_directory + "mana symbols/watermark_c.png", face:face) }
 	"mana symbol snow":                                   { watermark_blend(wm_directory + "mana symbols/watermark_s.png", face:face) }
 	
@@ -2921,6 +2922,7 @@ watermark_scripts :=
 	"transparent mana symbol black":                      { watermark_blend(colored: true, alpha: 0.30, dark_alpha: 0.45, wm_directory + "mana symbols/watermark_b.png", face:face) }
 	"transparent mana symbol red":                        { watermark_blend(colored: true, alpha: 0.35, dark_alpha: 0.30, wm_directory + "mana symbols/watermark_r.png", face:face) }
 	"transparent mana symbol green":                      { watermark_blend(colored: true, alpha: 0.35, dark_alpha: 0.30, wm_directory + "mana symbols/watermark_g.png", face:face) }
+	"transparent mana symbol silver":                      { watermark_blend(colored: true, alpha: 0.35, dark_alpha: 0.30, wm_directory + "mana symbols/watermark_i.png", face:face) }
 	
 	"transparent mana symbol old white":                  { watermark_blend(colored: true, alpha: 0.4, dark_alpha: 0.4, wm_directory + "mana symbols/watermark_w_old.png", face:face) }
 	"transparent mana symbol old blue":                   { watermark_blend(colored: true, alpha: 0.4, dark_alpha: 0.4, wm_directory + "mana symbols/watermark_u_old.png", face:face) }
@@ -3046,6 +3048,7 @@ watermark_scripts :=
 	"other magic symbols color pie":                      { watermark_blend(h:500, l:500, wm_directory + "other/colorpie.png", face:face) }
 	"other magic symbols judge academy":                  { watermark_blend(h:500, l:500, wm_directory + "promo/judge_academy.png", face:face) }
 	"other magic symbols foretell":                       { watermark_blend(h:460, l:500, wm_directory + "other/foretell.png", face:face) }
+	"other magic symbols foretell2":                       { watermark_blend(h:460, l:500, wm_directory + "other/foretell2.png", face:face) }
 	"other magic symbols echoverse":          		      { watermark_blend(h:500, l:500, wm_directory + "other/echoverse.png", face:face) }
 	"other magic symbols jace consortium":                { watermark_blend(h:500, l:500, wm_directory + "other/jace-consortium.png", face:face) }
 	"other magic symbols seekers of carmot":              { watermark_blend(h:500, l:500, wm_directory + "other/seekersofcarmot.png", face:face) }
@@ -3636,6 +3639,8 @@ transform_symbol_default :=
 		then "front triangle"
 	else if is_linked_meld_front()
 		then "meld"
+	else if match_erysite(card.sub_type)
+		then "voyager erysite"
 	else "none"
 }
 transform_symbol_counterpart :=
@@ -3768,7 +3773,8 @@ transform_symbol_script :=
 												"non standard phenomenon, " +
 												"non standard plane, " +
 												"non standard scheme, " +
-												"non standard vanguard")
+												"non standard vanguard, " +
+												"voyager erysite")
 	input
 }
 transform_symbol_backwards_compatibility :=

@@ -1712,6 +1712,7 @@ card field:
 	card list column: 0900
 	card list width: 110
 	include file: /magic-modules.mse-include/watermarks/choices
+	default: stylesheet; watermark_default(type: card.super_type, sub_type: card.sub_type, text: card.rule_text)
 card field:
 	type: choice
 	name: watermark 2

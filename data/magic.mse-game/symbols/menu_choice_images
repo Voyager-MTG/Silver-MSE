@@ -38,6 +38,8 @@ choice images:
 	non standard plane:				/magic.mse-game/symbols/plane.png
 	non standard scheme:			/magic.mse-game/symbols/scheme.png
 	non standard vanguard:			/magic.mse-game/symbols/vanguard.png
+
+	voyager erysite:				/magic.mse-game/symbols/erysite.png
 	
 	extra comedy:					/magic.mse-game/symbols/comedy.png
 	extra tragedy:					/magic.mse-game/symbols/tragedy.png

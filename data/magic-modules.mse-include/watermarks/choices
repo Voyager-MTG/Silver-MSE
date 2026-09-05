@@ -11,6 +11,7 @@ choice:
 	choice: black
 	choice: red
 	choice: green
+	choice: silver
 	choice: colorless
 	choice:
 		name: snow
@@ -50,6 +51,7 @@ choice:
 	choice: black
 	choice: red
 	choice: green
+	choice: silver
 	choice:
 		name: colorless
 		line below: true
@@ -201,6 +203,7 @@ choice:
 	choice: seekers of carmot
 	choice: the thran
 	choice: foretell
+	choice: foretell2
 	choice:
 		name: judge academy
 		line below: true
