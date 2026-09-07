@@ -75,6 +75,12 @@ base_template_prefix := [
 	ubstamp: "/magic-modules.mse-include/stamps/backs/375 ub/"
 	spacecraft: "modules/spacecraft/"
 	spacecraftpt: "modules/spacecraft/"
+    notch_card: "modules/notches/",
+    notch_fnm: "modules/notches/fnm/",
+    notch_inv: "modules/notches/inverted/",
+    notch_dka: "modules/notches/dka/",
+    notch_ub: "modules/notches/beyond/",
+    notch_shifted: "modules/notches/shifted/"
 ]
 
 shifted_template_prefix := [
@@ -142,6 +148,12 @@ shifted_template_prefix := [
 	spacecraft: "modules/spacecraft/"
 	spacecraftpt: "modules/spacecraft/"
     double_omen: "/magic-modules.mse-include/pages/double_omen/"
+    notch_card: "modules/notches/",
+    notch_fnm: "modules/notches/fnm/",
+    notch_inv: "modules/notches/inverted/",
+    notch_dka: "modules/notches/dka/",
+    notch_ub: "modules/notches/beyond/",
+    notch_shifted: "modules/notches/shifted/"
 ]
 template_prefix := { 
 	type := type or else ""
@@ -231,6 +243,12 @@ template_suffix := [
 	ubstamp: "stamp.png"
 	spacecraft: "circle.png"
 	spacecraftpt: "pt.png"
+    notch_card: ".png",
+    notch_fnm: ".png",
+    notch_inv: ".png",
+    notch_dka: ".png",
+    notch_ub: ".png",
+    notch_shifted: ".png",
 ]
 dummy := {"dummy"}
 

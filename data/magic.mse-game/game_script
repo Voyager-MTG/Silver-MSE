@@ -8,6 +8,7 @@ card list color script:
 	else if input == "black"                              then (if dark then rgb(135, 135, 135) else rgb(0,   0,   0  ))
 	else if input == "red"                                then (if dark then rgb(218, 60,  60 ) else rgb(168, 0,   0  ))
 	else if input == "green"                              then (if dark then rgb(50,  180, 50 ) else rgb(0,   168, 0  ))
+	else if input == "silver" 						      then rgb(0,100,100) 
 	else if input == "pink"                               then (if dark then rgb(210, 60,  140) else rgb(210, 60,  140))
 	else if input == "purple"                             then (if dark then rgb(165, 125, 175) else rgb(150, 100, 160))
 	else if input == "yellow"                             then (if dark then rgb(190, 200, 50 ) else rgb(190, 200, 50 ))

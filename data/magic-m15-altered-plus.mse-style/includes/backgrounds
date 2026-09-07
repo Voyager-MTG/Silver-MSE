@@ -242,9 +242,9 @@ main_background := {
 				then notch_image_fnm(pin_color)
 			else if is_inverted()
 				then notch_image_inv(pin_color)
-			else if is_beyond()
-				then notch_image_ub(pin_color)
-			else if is_planeshifted()
+			#else if is_beyond()
+			#	then notch_image_ub(pin_color)
+			else if is_shifted()
 				then notch_image_shifted(pin_color)
 			else notch_image(pin_color)
 
@@ -347,6 +347,14 @@ base_background := {
 		then old_background()
 	else card_background() 
 }
+
+#### Transform notches
+notch_image := { color_background(type:"notch_card", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
+notch_image_fnm := { color_background(type:"notch_fnm", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
+notch_image_inv := { color_background(type:"notch_inv", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
+notch_image_dka := { color_background(type:"notch_dka", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
+notch_image_ub := { color_background(type:"notch_ub", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
+notch_image_shifted := { color_background(type:"notch_shifted", base_hybrid:card_hybrid, artifact_blend:"white", multicolor_blend:"white", hybrid_blend:"white") }
 
 multi_scale := [0, 0.35, 0.7, 0.9, 1.0, 1.2, 1.5, 1.8, 2.0, 2,2, 2.5, 2.8, 3.0]
 multiply_levels := {

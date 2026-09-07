@@ -192,30 +192,7 @@ symbol:
 	image: mana_chaos.png
 	image font size: 151.69
 
-###################################################################################### Silver Hybrid Symbols
-symbol:
-	code: I/W
-	image: { masked_blend(dark: "mana_ii.png", light: "mana_ww.png", mask: "mask_hybrid.png") }
-	image font size: 145
-symbol:
-	code: I/U
-	image: { masked_blend(dark: "mana_ii.png", light: "mana_uu.png", mask: "mask_hybrid.png") }
-symbol:
-	code: I/B
-	image: { masked_blend(dark: "mana_ii.png", light: "mana_bb.png", mask: "mask_hybrid.png") }
-	image font size: 145
-symbol:
-	code: I/R
-	image: { masked_blend(dark: "mana_ii.png", light: "mana_rr.png", mask: "mask_hybrid.png") }
-	image font size: 145
-symbol:
-	code: I/G
-	image: { masked_blend(dark: "mana_ii.png", light: "mana_gg.png", mask: "mask_hybrid.png") }
-
 ###################################################################################### Phy Hybrid
-symbol:
-	code: I
-	image: mana_i.png
 symbol:
 	code: H/W/U
 	image: { masked_blend(dark: "mana_phyww.png", light: "mana_phyuu.png", mask: "mask_hybrid.png") }
@@ -411,6 +388,25 @@ symbol:
 	code: G/U
 	image: mana_gu.png
 	image font size: 145
+###################################################################################### Silver Hybrid Symbols
+symbol:
+	code: I/W
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_ww.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/U
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_uu.png", mask: "mask_hybrid.png") }
+symbol:
+	code: I/B
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_bb.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/R
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_rr.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/G
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_gg.png", mask: "mask_hybrid.png") }
 symbol:
 	code: C/W
 	image: mana_cmc_cw.png
@@ -693,9 +689,7 @@ symbol:
 		size: 1
 		color: rgb(0,0,0)
 		max stretch: 0.9
-symbol:
-	code: I
-	image: mana_infinite.png
+
 symbol:
 	code: 100
 	image: 100.png
@@ -827,6 +821,9 @@ symbol:
 	code: 0
 	image: 0.png
 	enabled: {ancestral_mana()}
+symbol:
+	code: I
+	image: mana_i.png
 symbol:
 	code: W
 	image: mana_w.png

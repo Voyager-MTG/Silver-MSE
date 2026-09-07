@@ -666,25 +666,25 @@ crop_multi_image := {
 
 ############################################################## Sorting mana symbols
 #### correctly sort a mana symbol (no guild mana)
-mana_sort := sort_text@(order: "\\?XYZI[0123456789]VHSFCA(EKPLO)(WUBRGI)") 
+mana_sort := sort_text@(order: "\\?XYZ[0123456789]VHSFCAI(EKPLO)(WUBRG)") 
 #### correctly sort wedge mana
-mana_sort_wedge := sort_text@(order: "\\?XYZI[0123456789]VHSFCA(EPOKL)(WBGURI)")
+mana_sort_wedge := sort_text@(order: "\\?XYZ[0123456789]VHSFCAI(EPOKL)(WBGUR)")
 #### sort nothing
-mana_unsort := sort_text@(order:"[/\\?XYZ0123456789VHSCAIEKPLOMWUBRGI]")
+mana_unsort := sort_text@(order:"[/\\?XYZ0123456789VHSCAIEKPLOMWUBRG]")
 #### correctly sort guild mana
-mana_sort_guild := sort_text@(order: "[\\?XYZ01234567890VHSFCAIEKPLOWUBRGI/|]") +
+mana_sort_guild := sort_text@(order: "[\\?XYZ01234567890VHSFCAIEKPLOWUBRG/|]") +
 		replace@(
 			#### No lookbehind :(
 			#match: "(?<!/)(./.|././.|./././.|.[|])(?!/)",
 			match: "./.|././.|./././.|.[|]",
 			in_context: "(^|[^/])<match>($|[^/])",
-			replace: {sort_text(order:"in_place((WUBRGI))")}
+			replace: {sort_text(order:"in_place(I(WUBRG))")}
 		)
 #### mana filter helpers
 mana_has_guild := match@(match: "[/|]") #### Is there guild or half mana in the input?
-mana_is_wedge := { chosen(set.mana_cost_sorting, choice: "tarkir wedge sorting") and ( number_of_items(in: sort_text(order:"<WUBRGI>", input), filter: "<WUBRGI>") == 3 ) }
+mana_is_wedge := { chosen(set.mana_cost_sorting, choice: "tarkir wedge sorting") and ( number_of_items(in: sort_text(order:"<IWUBRG>", input), filter: "<IWUBRG>") == 3 ) }
 mana_has_wedge := {  
-	wedge_check := sort_text(order:"<WUBRGI>", input)
+	wedge_check := sort_text(order:"<IWUBRG>", input)
 	mana_is_wedge() and (wedge_check == "WUR" or wedge_check == "WBR" or wedge_check == "WBG" or wedge_check == "UBG" or wedge_check == "URG")
 }
 
@@ -6278,6 +6278,19 @@ alt_symbol := {
 	alt_array := alt_rarity_color()
 	symbol_variation(
 		symbol:set.symbol,
+		border_radius: alt_array.12,
+		fill_type: "linear gradient",
+		fill_color_1: rgb(alt_array.0, alt_array.1, alt_array.2),
+		fill_color_2: rgb(alt_array.3, alt_array.4, alt_array.5),
+		border_color_1: rgb(alt_array.6, alt_array.7, alt_array.8),
+		border_color_2: rgb(alt_array.9, alt_array.10, alt_array.11),
+		center_x:0.5, center_y:0.5, end_x:1, end_y:1
+	)
+}
+alt_mp_symbol := {
+	alt_array := alt_rarity_color()
+	symbol_variation(
+		symbol:set.masterpiece_symbol,
 		border_radius: alt_array.12,
 		fill_type: "linear gradient",
 		fill_color_1: rgb(alt_array.0, alt_array.1, alt_array.2),
