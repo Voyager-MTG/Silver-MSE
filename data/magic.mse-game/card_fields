@@ -639,6 +639,7 @@ card field:
 	card list name: Alias
 	card list column: 0030
 	card list width: 150
+	default: stylesheet; alias_default(card.alias, alias_type: card.alias_type)
 card field:
 	type: text
 	name: alias 2
